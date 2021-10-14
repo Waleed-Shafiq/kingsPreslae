@@ -14,7 +14,7 @@ export const useMint = () => {
     const mintTokens = useCallback(async (tokens) => {
         const amount = getEthValue(0.066, tokens)
 
-        const tx = await contract.methods.mint(tokens).send({ from: account, value: amount })
+        const tx = await contract.methods.mintPresale(tokens).send({ from: account, value: amount })
             .on('transactionHash', (tx) => { return tx.transactionHash });
         return tx
 
