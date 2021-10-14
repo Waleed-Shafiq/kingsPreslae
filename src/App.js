@@ -7,6 +7,7 @@ import useAuth from './hooks/useAuth';
 import { ToastContainer, toast } from 'react-toastify';
 import { useTotalSupply, useMaxSupply } from './hooks/dataFetcher';
 import useMint from './hooks/useMint';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -70,9 +71,9 @@ function App() {
 
   return (
     <>
-      <ToastContainer />
 
       <div className="root">
+
         <div className="lefttree">
           <img
             className="img-fluid leftimg"
@@ -89,13 +90,14 @@ function App() {
         </div>
         {/* <div className="birdsdiv">
           <img
-            className="img-fluid birdimg"
-            src={require("./assets/img/bird.png").default}
-            alt=""
+          className="img-fluid birdimg"
+          src={require("./assets/img/bird.png").default}
+          alt=""
           />
         </div> */}
         <Container>
           <div className="cus-navb mt-3 d-flex justify-content-between align-items-center">
+            <ToastContainer />
             <div className="logo">
               <img
                 className="img-fluid logo-img"
