@@ -6,7 +6,7 @@ body {
 }
 
 .root {
-  height: 100vh;
+  height: 96vh;
   /* color: #fff; */
 }
 
@@ -88,6 +88,7 @@ body {
 .lefttree {
   position: absolute;
   top: 14%;
+  left : 3px
 }
 .leftimg {
   height: 700px;
@@ -95,7 +96,7 @@ body {
 .righttree {
   position: absolute;
   top: 50%;
-  right: -5%;
+  right: 0%;
 }
 .rightimg {
   height: 400px;
