@@ -49,6 +49,26 @@ const useMaxSupply = () => {
 }
 
 
+const usePrice = () => {
+    const [price, setPrice] = useState(0.0)
+
+    const web3 = useWeb3()
+    const { fastRefresh } = useRefresh()
+    const tokenAddress = environment.kingsAddress;
+    const contract = getBep20Contract(tokenAddress, web3)
+    useEffect(async () => {
+        try {
+            const res = await contract.methods.PRESALE_PRICE().call()
+            setPrice(parseInt(res) / 10 ** 18)
+        } catch (error) {
+            console.log('error"""', error)
+        }
+
+    }, [contract, fastRefresh])
+
+    return price
+}
+
 export default useTotalSupply
 
-export { useTotalSupply, useMaxSupply };
+export { useTotalSupply, useMaxSupply, usePrice };

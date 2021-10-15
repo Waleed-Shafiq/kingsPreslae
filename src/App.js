@@ -5,7 +5,7 @@ import useEagerConnect from './hooks/useEagerConnect';
 import { useWeb3React } from '@web3-react/core';
 import useAuth from './hooks/useAuth';
 import { ToastContainer, toast } from 'react-toastify';
-import { useTotalSupply, useMaxSupply } from './hooks/dataFetcher';
+import { useTotalSupply, useMaxSupply, usePrice } from './hooks/dataFetcher';
 import useMint from './hooks/useMint';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -15,6 +15,7 @@ function App() {
   const { mint } = useMint();
   const supply = useTotalSupply();
   const supplyMax = useMaxSupply();
+  const price = usePrice();
 
 
   const { login, logout } = useAuth();
@@ -61,7 +62,7 @@ function App() {
     }
 
     try {
-      await mint(num)
+      await mint(num, price)
     } catch (error) {
       console.log(error)
     }
@@ -143,7 +144,7 @@ function App() {
                   <h3 className="subtitle"> {supply} / {supplyMax}</h3>
                 </div>
                 <div className="text-center mt-4">
-                  <h3 className="subtitle">0.066 ETH each</h3>
+                  <h3 className="subtitle">{price} ETH each</h3>
                   {/* <h3 className="subtitle">
                     # max. of 10 Punkins per transaction
                   </h3>

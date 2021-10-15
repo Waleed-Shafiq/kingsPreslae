@@ -11,8 +11,8 @@ export const useMint = () => {
     const web3 = useWeb3();
     const tokenAddress = environment.kingsAddress;
     const contract = getBep20Contract(tokenAddress, web3)
-    const mintTokens = useCallback(async (tokens) => {
-        const amount = getEthValue(0.066, tokens)
+    const mintTokens = useCallback(async (tokens , price) => {
+        const amount = getEthValue(price, tokens)
 
         const tx = await contract.methods.mintPresale(tokens).send({ from: account, value: amount })
             .on('transactionHash', (tx) => { return tx.transactionHash });
